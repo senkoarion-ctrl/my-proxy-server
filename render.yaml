@@ -1,1 +1,14 @@
-
+services:
+  - type: web
+    name: shadowsocks
+    env: docker
+    repo: https://github.com/shadowsocks/shadowsocks-rust
+    branch: master
+    healthCheckPath: /
+    envVars:
+      - key: METHOD
+        value: aes-256-gcm
+      - key: PASSWORD
+        generateValue: true
+      - key: ARGS
+        value: -s 0.0.0.0:443
